@@ -23,7 +23,7 @@ worker-01   Ready    <none>   21m   v1.16.0   10.0.2.15     <none>        Ubuntu
 worker-02   Ready    <none>   19m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
 ```
 
-2. Run simple deployment based on nginx webserver and expose it throug HTTP port 80 on container port HTTP 80
+2. Run simple deployment based on nginx webserver and expose it through HTTP port 80 on container port HTTP 80
 
 ```
 kubectl create deployment nginx --image=nginx
@@ -47,3 +47,6 @@ Connection: keep-alive
 ETag: "5d5279b8-264"
 Accept-Ranges: bytes
 ```
+3. Destroy vagrant environment
+
+   ```vagrant destroy -f```
