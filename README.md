@@ -16,7 +16,7 @@ vagrant up
 2. connect to the master ```ssh -F vagrant-ssh master-01``` or ```vagrant ssh master-01```, and run:
 
 ```
-kubect get no -o wide
+sudo kubect get no -o wide
 
 NAME        STATUS   ROLES    AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 master      Ready    master   24m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
@@ -27,17 +27,17 @@ worker-02   Ready    <none>   19m   v1.16.0   10.0.2.15     <none>        Ubuntu
 3. Run simple deployment based on nginx webserver and expose it through HTTP port 80 on container port HTTP 80
 
 ```
-kubectl create deployment nginx --image=nginx
+sudo kubectl create deployment nginx --image=nginx
 
-kubectl get deployments -o wide
+sudo kubectl get deployments -o wide
 
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES   SELECTOR
 nginx   1/1     1            1           26m   nginx        nginx    app=nginx
 
 
-kubectl expose deployment nginx --port 80 --target-port 80
+sudo kubectl expose deployment nginx --port 80 --target-port 80
 
-kubectl get svc
+sudo kubectl get svc
 
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP   21m
@@ -57,4 +57,4 @@ Accept-Ranges: bytes
 ```
 4. Destroy vagrant environment
 
-   ```vagrant destroy -f```
+```vagrant destroy -f```
