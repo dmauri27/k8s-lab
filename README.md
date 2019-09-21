@@ -29,14 +29,16 @@ worker-02   Ready    <none>   19m   v1.16.0   10.0.2.15     <none>        Ubuntu
 ```
 kubectl create deployment nginx --image=nginx
 
-root@master:~# kubectl get deployments -o wide
+kubectl get deployments -o wide
+
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES   SELECTOR
 nginx   1/1     1            1           26m   nginx        nginx    app=nginx
 
 
 kubectl expose deployment nginx --port 80 --target-port 80
 
-root@master:~# kubectl get svc
+kubectl get svc
+
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP   21m
 nginx        ClusterIP   10.110.243.211   <none>        80/TCP    8s
