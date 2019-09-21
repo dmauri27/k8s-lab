@@ -57,4 +57,4 @@ Accept-Ranges: bytes
 ```
 4. Destroy vagrant environment
 
-```vagrant destroy -f```
+  ```vagrant destroy -f```
