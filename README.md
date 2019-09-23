@@ -11,6 +11,7 @@ vagrant up
 **When scritp has finished to run, check if master and workers are corretly running:**
 
 1. Generate vagrant config file: Run this every time you add new host to your Vagrant file
+
 ``` vagrant ssh-config > vagrant-ssh ```
 
 2. connect to the master ```ssh -F vagrant-ssh master-01``` or ```vagrant ssh master-01```, and run:
