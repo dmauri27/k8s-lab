@@ -23,6 +23,25 @@ master      Ready    master   24m   v1.16.0   10.0.2.15     <none>        Ubuntu
 worker-01   Ready    <none>   21m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
 worker-02   Ready    <none>   19m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
 ```
+```
+sudo kubectl get po --all-namespaces
+
+NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-564b6667d7-r979r   1/1     Running   0          7m1s
+kube-system   calico-node-fw87x                          1/1     Running   0          3m54s
+kube-system   calico-node-pd68w                          1/1     Running   0          7m1s
+kube-system   calico-node-pmm8h                          1/1     Running   0          71s
+kube-system   coredns-5644d7b6d9-7f8zr                   1/1     Running   0          7m1s
+kube-system   coredns-5644d7b6d9-wzb5j                   1/1     Running   0          7m1s
+kube-system   etcd-master                                1/1     Running   0          5m58s
+kube-system   kube-apiserver-master                      1/1     Running   0          6m4s
+kube-system   kube-controller-manager-master             1/1     Running   0          6m6s
+kube-system   kube-proxy-qpb96                           1/1     Running   0          71s
+kube-system   kube-proxy-strts                           1/1     Running   0          3m54s
+kube-system   kube-proxy-z4ffr                           1/1     Running   0          7m1s
+kube-system   kube-scheduler-master                      1/1     Running   0          6m17s
+```
+
 
 3. Run simple deployment based on nginx webserver and expose it through HTTP port 80 on container port HTTP 80
 
