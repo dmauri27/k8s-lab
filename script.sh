@@ -2,6 +2,7 @@
 
 # Disable swap
 sudo swapoff -a
+sed -e '/swap/ s/^#*/#/' -i /etc/fstab
 
 # Install Docker
 sudo apt-get update
