@@ -16,7 +16,8 @@ vagrant up
 2. connect to the master ```ssh -F vagrant-ssh master-01``` or ```vagrant ssh master-01```, and run:
 
 ```
-sudo kubect get no -o wide
+sudo -i
+kubectl get no -o wide
 
 NAME        STATUS   ROLES    AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 master      Ready    master   24m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
@@ -24,7 +25,7 @@ worker-01   Ready    <none>   21m   v1.16.0   10.0.2.15     <none>        Ubuntu
 worker-02   Ready    <none>   19m   v1.16.0   10.0.2.15     <none>        Ubuntu 18.04.2 LTS   4.15.0-51-generic   docker://18.9.0
 ```
 ```
-sudo kubectl get po --all-namespaces
+kubectl get po --all-namespaces
 
 NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
 kube-system   calico-kube-controllers-564b6667d7-r979r   1/1     Running   0          7m1s
@@ -46,17 +47,17 @@ kube-system   kube-scheduler-master                      1/1     Running   0    
 3. Run simple deployment based on nginx webserver and expose it through HTTP port 80 on container port HTTP 80
 
 ```
-sudo kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=nginx
 
-sudo kubectl get deployments -o wide
+kubectl get deployments -o wide
 
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES   SELECTOR
 nginx   1/1     1            1           26m   nginx        nginx    app=nginx
 
 
-sudo kubectl expose deployment nginx --port 80 --target-port 80
+kubectl expose deployment nginx --port 80 --target-port 80
 
-sudo kubectl get svc
+kubectl get svc
 
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP   21m
