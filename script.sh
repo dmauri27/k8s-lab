@@ -60,8 +60,14 @@ if [ "$HOSTNAME" = "master" ]; then
   kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
   echo `kubeadm token create --print-join-command` > /opt/join.sh
   apt install bash-completion -y
+  IP=`ip addr show eth1 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1`
+  HOST=$(hostname)
+  sed -i "/$HOST/ s/.*/$IP\t$HOST/" /etc/hosts
   kubectl completion bash > /etc/bash_completion.d/kubectl && exec bash --login
 else
+  IP=`ip addr show eth1 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1`
+  HOST=$(hostname)
+  sed -i "/$HOST/ s/.*/$IP\t$HOST/" /etc/hosts
   sudo apt install sshpass -y
   sshpass -p "vagrant" scp -o StrictHostKeyChecking=no vagrant@192.100.50.200:/opt/join.sh . && sudo chmod +x join.sh && sudo sh join.sh
 fi 
