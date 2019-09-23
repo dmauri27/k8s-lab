@@ -58,10 +58,10 @@ if [ "$HOSTNAME" = "master" ]; then
   sudo cp -i /etc/kubernetes/admin.conf "$HOME/.kube/config"
   sudo chown $(id -u):$(id -g) "$HOME/.kube/config"
   kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
-  echo `kubeadm token create --print-join-command` > /tmp/join.sh
+  echo `kubeadm token create --print-join-command` > /opt/join.sh
   apt install bash-completion -y
   kubectl completion bash > /etc/bash_completion.d/kubectl && exec bash --login
 else
   sudo apt install sshpass -y
-  sshpass -p "vagrant" scp -o StrictHostKeyChecking=no vagrant@192.100.50.200:/tmp/join.sh . && sudo chmod +x join.sh && sudo sh join.sh
+  sshpass -p "vagrant" scp -o StrictHostKeyChecking=no vagrant@192.100.50.200:/opt/join.sh . && sudo chmod +x join.sh && sudo sh join.sh
 fi 
