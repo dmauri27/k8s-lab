@@ -3,6 +3,11 @@
 Start a quick kubernetes cluster in a Vagrant environment. The script runs on the VMs and automatically will install one master and two workers node. 
 The same will install all the necessary components to startup a k8s cluster based on Ubuntu 18.04. Workers node will join the cluster in an automatically way, using calico network plugin.
 
+**Prerequisite**
+
+- VirtualBox or similar
+- NAT and Internal network cards (configured in Vagrant)
+
 **Once you have copied the files in your directory just run:**
 
 ``` 
